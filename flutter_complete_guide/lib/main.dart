@@ -4,16 +4,49 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  var questionIndex = 0;
+
+  void answerQuestion() {
+    setState(() {
+      questionIndex += 1;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    var questions = const [
+      'What\'s your favorite color?',
+      'What\'s your favorite animal?',
+    ];
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: const Text('My First App'),),
-        body: const Text('This is my default text!'),
+        body: Column(
+          children: [
+            Text(questions[questionIndex]),
+            ElevatedButton(
+              child: const Text('Answer 1'), 
+              onPressed: answerQuestion,
+            ),
+            ElevatedButton(
+              child: const Text('Answer 2'), 
+              onPressed: answerQuestion,
+            ),
+            ElevatedButton(
+              child: const Text('Answer 3'), 
+              onPressed: answerQuestion,
+            ),
+          ],
+        ),
       )
     );
   }
