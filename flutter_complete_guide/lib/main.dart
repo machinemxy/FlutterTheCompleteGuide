@@ -12,11 +12,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var questionIndex = 0;
+  var _questionIndex = 0;
 
-  void answerQuestion() {
+  void _answerQuestion() {
     setState(() {
-      questionIndex += 1;
+      _questionIndex += 1;
     });
   }
 
@@ -32,18 +32,18 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(title: const Text('My First App'),),
         body: Column(
           children: [
-            Text(questions[questionIndex]),
+            Text(questions[_questionIndex]),
             ElevatedButton(
               child: const Text('Answer 1'), 
-              onPressed: answerQuestion,
+              onPressed: _answerQuestion,
             ),
             ElevatedButton(
               child: const Text('Answer 2'), 
-              onPressed: answerQuestion,
+              onPressed: _answerQuestion,
             ),
             ElevatedButton(
               child: const Text('Answer 3'), 
-              onPressed: answerQuestion,
+              onPressed: _answerQuestion,
             ),
           ],
         ),
